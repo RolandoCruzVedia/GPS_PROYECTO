@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Tráfico — Av. Víctor Paz Estenssoro, Tarija</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <style>
+    :root {
+      --azul-dark:  #0f1e3a;
+      --azul-mid:   #1a2f5a;
+      --azul-light: #2a4a8a;
+      --accent:     #3b82f6;
+      --alto:       #ef4444;
+      --medio:      #f59e0b;
+      --bajo:       #10b981;
+      --sin-datos:  #6b7280;
+      --bg:         #f1f5f9;
+      --card:       #ffffff;
+      --border:     #e2e8f0;
+      --text:       #1e293b;
+      --text-muted: #64748b;
+      --sidebar-w:  300px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--azul-dark);
+      color: white;
+      padding: 0 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      border-bottom: 2px solid var(--accent);
+    }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .header-logo {
+      width: 32px; height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    header h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; }
+    header .subtitle { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .live-badge {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(16,185,129,0.15);
+      border: 1px solid rgba(16,185,129,0.4);
+      border-radius: 20px; padding: 4px 10px;
+      font-size: 11px; color: #10b981;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #10b981;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    #timestamp { font-size: 11px; color: rgba(255,255,255,0.5); }
+
+    /* ── Layout principal ── */
+    .main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--azul-dark);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      flex-shrink: 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .sidebar-section {
+      padding: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .sidebar-section h3 {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+
+    /* Selector de franja */
+    .filtro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .filtro-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+    select {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      color: white;
+      padding: 7px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      outline: none;
+    }
+    select:focus { border-color: var(--accent); }
+    select option { background: #1a2f5a; color: white; }
+
+    .btn-consultar {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-consultar:hover { background: #2563eb; }
+
+    /* Tarjetas de zona */
+    .zona-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+      transition: border-color 0.3s;
+    }
+    .zona-card.alto  { border-left: 3px solid var(--alto); }
+    .zona-card.medio { border-left: 3px solid var(--medio); }
+    .zona-card.bajo  { border-left: 3px solid var(--bajo); }
+
+    .zona-header {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 10px;
+    }
+    .zona-nombre { font-size: 13px; font-weight: 600; }
+    .nivel-badge {
+      font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 10px;
+      letter-spacing: 0.05em;
+    }
+    .nivel-badge.alto  { background: rgba(239,68,68,0.2);  color: #fca5a5; }
+    .nivel-badge.medio { background: rgba(245,158,11,0.2); color: #fcd34d; }
+    .nivel-badge.bajo  { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+    .nivel-badge.sin-datos { background: rgba(107,114,128,0.2); color: #9ca3af; }
+
+    /* Barra de porcentaje */
+    .pct-bar-wrap {
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px; height: 6px; margin-bottom: 6px; overflow: hidden;
+    }
+    .pct-bar {
+      height: 100%; border-radius: 4px;
+      transition: width 0.6s ease;
+    }
+    .pct-label { font-size: 11px; color: rgba(255,255,255,0.5); }
+    .pct-value { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+
+    /* Nivel general */
+    .nivel-general-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 14px;
+      text-align: center;
+    }
+    .nivel-general-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 6px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nivel-general-valor { font-size: 28px; font-weight: 800; letter-spacing: 0.05em; }
+    .franja-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+    /* Clima */
+    .clima-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 14px;
+      display: flex; justify-content: space-around;
+      text-align: center;
+    }
+    .clima-item { display: flex; flex-direction: column; gap: 2px; }
+    .clima-icono { font-size: 18px; }
+    .clima-valor { font-size: 16px; font-weight: 700; }
+    .clima-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Leyenda */
+    .leyenda-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: rgba(255,255,255,0.7);
+      margin-bottom: 6px;
+    }
+    .leyenda-dot {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ── Mapa ── */
+    .map-wrap {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Aviso cargando sobre el mapa */
+    .map-overlay {
+      position: absolute; inset: 0;
+      background: rgba(15,30,58,0.7);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999; color: white; font-size: 14px;
+      backdrop-filter: blur(4px);
+    }
+    .map-overlay.hidden { display: none; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--azul-dark);
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      padding: 6px;
+      font-size: 10px;
+      flex-shrink: 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Responsive móvil ── */
+    @media (max-width: 700px) {
+      :root { --sidebar-w: 100%; }
+      .main { flex-direction: column; }
+      .sidebar {
+        width: 100%; height: auto;
+        max-height: 55vh; overflow-y: auto;
+      }
+      .map-wrap { height: 45vh; }
+      header h1 { font-size: 13px; }
+      .header-right { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="header-logo">🚦</div>
+    <div>
+      <h1>Control de Tráfico — Tarija</h1>
+      <div class="subtitle">Av. Víctor Paz Estenssoro</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="live-badge"><div class="live-dot"></div> EN VIVO</div>
+    <span id="timestamp">—</span>
+  </div>
+</header>
+
+<div class="main">
+  <div class="sidebar">
+
+    <div class="sidebar-section">
+      <h3>Consultar predicción</h3>
+      <div class="filtro-grid">
+        <div>
+          <div class="filtro-label">Día</div>
+          <select id="sel-dia">
+            <option value="0">Lunes</option>
+            <option value="1">Martes</option>
+            <option value="2">Miércoles</option>
+            <option value="3">Jueves</option>
+            <option value="4">Viernes</option>
+            <option value="5">Sábado</option>
+            <option value="6">Domingo</option>
+          </select>
+        </div>
+        <div>
+          <div class="filtro-label">Hora</div>
+          <select id="sel-hora">
+            </select>
+        </div>
+      </div>
+      <button class="btn-consultar" onclick="consultarFranja()">Ver predicción</button>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Nivel general</h3>
+      <div class="nivel-general-card">
+        <div class="nivel-general-label">Congestión</div>
+        <div class="nivel-general-valor" id="nivel-general">—</div>
+        <div class="franja-label" id="franja-label">—</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Condiciones climáticas</h3>
+      <div class="clima-card">
+        <div class="clima-item">
+          <div class="clima-icono">🌡️</div>
+          <div class="clima-valor" id="clima-temp">—</div>
+          <div class="clima-label">Temp. máx/mín</div>
+        </div>
+        <div class="clima-item">
+          <div class="clima-icono">🌧️</div>
+          <div class="clima-valor" id="clima-precip">—</div>
+          <div class="clima-label">Precipitación</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Zonas de Control</h3>
+
+      <div class="zona-card" id="card-mercado">
+        <div class="zona-header">
+          <span class="zona-nombre">Mercado Campesino</span>
+          <span class="nivel-badge" id="badge-mercado">—</span>
+        </div>
+        <div class="pct-value" id="pct-mercado">—</div>
+        <div class="pct-bar-wrap">
+          <div class="pct-bar" id="bar-mercado" style="width:0%; background:var(--sin-datos)"></div>
+        </div>
+        <div class="pct-label">% de congestión estimada</div>
+      </div>
+
+      <div class="zona-card" id="card-rotonda">
+        <div class="zona-header">
+          <span class="zona-nombre">Rotonda San Martín</span>
+          <span class="nivel-badge" id="badge-rotonda">—</span>
+        </div>
+        <div class="pct-value" id="pct-rotonda">—</div>
+        <div class="pct-bar-wrap">
+          <div class="pct-bar" id="bar-rotonda" style="width:0%; background:var(--sin-datos)"></div>
+        </div>
+        <div class="pct-label">% de congestión estimada</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Leyenda</h3>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:var(--alto)"></div> Alto (Crítico)</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:var(--medio)"></div> Medio (Moderado)</div>
+      <div class="leyenda-item"><div class="leyenda-dot" style="background:var(--bajo)"></div> Bajo (Fluido)</div>
+    </div>
+
+  </div>
+
+  <div class="map-wrap">
+    <div class="map-overlay" id="map-overlay">Cargando mapa vehicular...</div>
+    <div id="map"></div>
+  </div>
+
+</div>
+
+<footer>
+  Tesis de Maestría en Ciencia de Datos y Big Data — Predicción de Congestión Vehicular — Tarija, Bolivia
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  // ── Inicializar mapa centrado en el segmento vial de Tarija ────────────────
+  const map = L.map('map', { zoomControl: true }).setView([-21.52142, -64.74243], 16);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  // Estructuras de control para el renderizado geoespacial lineal
+  let polilineasTrafico = [];
+  let circulosZonas = [];
+
+  // ── Selector dinámico de horas ─────────────────────────────────────────────
+  const selHora = document.getElementById('sel-hora');
+  for (let h = 0; h < 24; h++) {
+    const opt = document.createElement('option');
+    opt.value = h;
+    opt.textContent = `${String(h).padStart(2,'0')}:00`;
+    selHora.appendChild(opt);
+  }
+
+  // Sincronización temporal por defecto (Día y hora local actual)
+  const ahora = new Date();
+  document.getElementById('sel-dia').value  = ahora.getDay() === 0 ? 6 : ahora.getDay() - 1;
+  document.getElementById('sel-hora').value = ahora.getHours();
+
+  // ── Inicialización de Áreas de Control Flotantes ───────────────────────────
+  async function cargarZonasDelimitadoras() {
+    try {
+      const r = await fetch('/api/zonas');
+      const zonas = await r.json();
+
+      circulosZonas.forEach(c => map.removeLayer(c));
+      circulosZonas = [];
+
+      Object.values(zonas).forEach(z => {
+        const circulo = L.circle([z.lat, z.lng], {
+          radius: z.radio_m,
+          color: z.color,
+          fillColor: z.color,
+          fillOpacity: 0.04,
+          weight: 1.5,
+          dashArray: '5, 5'
+        }).addTo(map);
+
+        circulo.bindTooltip(z.nombre, { permanent: false, direction: 'top' });
+        circulosZonas.push(circulo);
+      });
+    } catch(e) { console.error('Error al inicializar áreas de control:', e); }
+  }
+
+  // ── Renderizado de Canales y Sentidos de Tráfico (Polylines de Vías) ───────
+  // Nota: este bloque ya es genérico — funciona igual con 4 u 8 tramos,
+  // simplemente dibuja todo lo que venga del endpoint /api/vias_trafico
+  async function actualizarTraficoLineal(dia, hora) {
+    try {
+      const r = await fetch(`/api/vias_trafico?dia=${dia}&hora=${hora}`);
+      const vias = await r.json();
+
+      polilineasTrafico.forEach(p => map.removeLayer(p));
+      polilineasTrafico = [];
+
+      vias.forEach(v => {
+
+        const coordenadasCorregidas = v.coordenadas.map(coord => {
+            return [coord[1], coord[0]];
+        });
+
+        const polyline = L.polyline(coordenadasCorregidas, {
+          color: v.color,
+          weight: 7,
+          opacity: 0.85,
+          lineCap: 'round',
+          lineJoin: 'round'
+        }).addTo(map);
+
+        const climaLinea = (v.temperatura_max != null && v.temperatura_min != null)
+          ? `Clima: ${v.temperatura_max}°C / ${v.temperatura_min}°C · Lluvia: ${v.precipitacion ?? 0} mm<br>`
+          : '';
+
+        polyline.bindPopup(`
+          <div style="font-family:'Segoe UI', sans-serif; font-size:12px; color:#1e293b;">
+            <b style="color:#0f1e3a; font-size:13px;">Tramo de Inspección:</b><br>${v.nombre_tramo}<br><br>
+            Nivel de Congestión: <span style="color:${v.color}; font-weight:bold;">${v.nivel}</span><br>
+            Densidad de Ocupación Est.: <b>${v.pct}%</b><br>
+            ${climaLinea}
+          </div>
+        `);
+
+        polilineasTrafico.push(polyline);
+      });
+
+    } catch(e) { console.error('Error al actualizar flujo vehicular lineal:', e); }
+  }
+
+  // ── Actualización de los Paneles e Indicadores Estadísticos Laterales ─────
+  async function actualizarResumenLateral(dia, hora) {
+    try {
+      const r = await fetch(`/api/resumen?dia=${dia}&hora=${hora}`);
+      const d = await r.json();
+      if (d.error) return;
+
+      const ng = document.getElementById('nivel-general');
+      ng.textContent = d.nivel_general;
+      ng.style.color = d.color_general || 'white';
+      document.getElementById('franja-label').textContent = `${d.dia_nombre} · ${d.hora_label}`;
+
+      actualizarTarjetaZona('mercado', d.mercado_campesino);
+      actualizarTarjetaZona('rotonda', d.rotonda_san_martin);
+      actualizarClima(d.mercado_campesino, d.rotonda_san_martin);
+
+    } catch(e) { console.error('Error al procesar el resumen analítico:', e); }
+  }
+
+  function actualizarTarjetaZona(id, datosZona) {
+    if (!datosZona) return;
+    // Corregido: reemplazo global de espacios para que "SIN DATOS" -> "sin-datos"
+    // coincida con la clase CSS .nivel-badge.sin-datos
+    const nivelClase = (datosZona.nivel || 'sin-datos').toLowerCase().replace(/ /g, '-');
+    const pct = datosZona.pct_congestion || 0;
+
+    document.getElementById(`card-${id}`).className = `zona-card ${nivelClase}`;
+
+    const badge = document.getElementById(`badge-${id}`);
+    badge.textContent = datosZona.nivel;
+    badge.className   = `nivel-badge ${nivelClase}`;
+
+    document.getElementById(`pct-${id}`).textContent = pct + '%';
+
+    const bar = document.getElementById(`bar-${id}`);
+    bar.style.width      = Math.min(pct, 100) + '%';
+    bar.style.background = datosZona.color || 'var(--sin-datos)';
+  }
+
+  // El clima es el mismo para ambas zonas (misma estación SENAMHI, mismo día),
+  // así que se toma de la primera zona que traiga datos disponibles.
+  function actualizarClima(...zonasDatos) {
+    const conClima = zonasDatos.find(z => z && z.temperatura_max != null);
+    const tempEl = document.getElementById('clima-temp');
+    const precipEl = document.getElementById('clima-precip');
+
+    if (!conClima) {
+      tempEl.textContent = '—';
+      precipEl.textContent = '—';
+      return;
+    }
+
+    tempEl.textContent = `${conClima.temperatura_max}° / ${conClima.temperatura_min}°`;
+    precipEl.textContent = `${conClima.precipitacion ?? 0} mm`;
+  }
+
+  // ── Orquestador de Consultas Espacio-Temporales ────────────────────────────
+  async function consultarFranja() {
+    const dia  = parseInt(document.getElementById('sel-dia').value);
+    const hora = parseInt(document.getElementById('sel-hora').value);
+
+    await Promise.all([
+      actualizarTraficoLineal(dia, hora),
+      actualizarResumenLateral(dia, hora)
+    ]);
+  }
+
+  // ── Monitoreo de Estado de Sincronización del Backend ──────────────────────
+  async function verificarEstadoBackend() {
+    try {
+      const r = await fetch('/api/estado');
+      const d = await r.json();
+      document.getElementById('timestamp').textContent = new Date(d.timestamp).toLocaleString('es-BO');
+    } catch(e) {
+      document.getElementById('timestamp').textContent = 'Error de Enlace';
+    }
+  }
+
+  // ── Inicialización Global del Sistema ──────────────────────────────────────
+  async function init() {
+    const overlay = document.getElementById('map-overlay');
+    overlay.classList.remove('hidden');
+
+    await cargarZonasDelimitadoras();
+    await consultarFranja();
+    await verificarEstadoBackend();
+
+    overlay.classList.add('hidden');
+  }
+
+  init();
+
+  setInterval(() => {
+    verificarEstadoBackend();
+    consultarFranja();
+  }, 60000);
+</script>
+
+</body>
+</html>
