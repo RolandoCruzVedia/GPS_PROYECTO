@@ -3,8 +3,9 @@ processing/build_dataset.py
 
 Lee datos GPS JSON desde ingestion/data/gps/
 integra datos climáticos SENAMHI
-y genera dataset.csv para ML de predicción de congestión,
-con granularidad por TRAMO (8 segmentos / 16 puntos de control).
+y genera dataset.csv como SERIE TEMPORAL REAL por tramo (fecha x hora),
+con variables derivadas (lags, promedio movil, tendencia) y la variable
+objetivo "velocidad_siguiente" (Etapas 3 a 6 de la metodologia).
 """
 
 import json
@@ -16,19 +17,20 @@ from pathlib import Path
 # ── Rutas ──────────────────────────────────────────────────────────────────────
 
 BASE_DIR = Path(__file__).resolve().parent
-
-# Antes era una ruta absoluta hardcodeada a /home/rolando/...
-# Ahora se calcula en relación al script, igual que en ingestion/parse_batches.py
 INGESTION_DATA_DIR = (BASE_DIR / ".." / "ingestion" / "data").resolve()
 GPS_DIR = INGESTION_DATA_DIR / "gps"
 SENAMHI_FILE = INGESTION_DATA_DIR / "senamhi" / "senamhi_tarija.json"
 
 OUT_FILE = BASE_DIR / "dataset.csv"
 
-RADIO_TOLERANCIA_METROS = 45.0
+RADIO_TOLERANCIA_METROS = 100.0
+
+# Maximo de horas de separacion aceptado entre "hora actual" y "hora
+# siguiente observada" para que el par cuente como ejemplo de entrenamiento.
+GAP_MAXIMO_HORAS = 4
 
 
-# ── Los 8 tramos / 16 puntos de control (mismos que ingestion/parse_batches.py) ─
+# ── Los 8 tramos / 16 puntos de control ─────────────────────────────────────
 
 TRAMOS = [
     {"id_tramo": "MC_A1", "zona": "mercado_campesino",
@@ -76,14 +78,6 @@ def haversine_m(lat1, lng1, lat2, lng2):
 
 
 def asignar_tramo(lat, lng):
-    """
-    Determina a qué tramo (de los 8) pertenece un punto GPS, según su
-    cercanía a alguno de los 16 puntos de control (inicio o fin).
-    Si el punto está dentro del radio de tolerancia de más de un tramo,
-    se asigna al más cercano. Si no está cerca de ninguno, se descarta
-    (devuelve None, None) — así el dataset final solo contiene registros
-    realmente ubicados en los 16 puntos de control.
-    """
     mejor_tramo = None
     mejor_distancia = RADIO_TOLERANCIA_METROS
 
@@ -103,6 +97,8 @@ def asignar_tramo(lat, lng):
 
 
 def nivel_congestion(pct_detenido, pct_lento):
+    """Se conserva solo como variable descriptiva / comparativa con el
+    modelo anterior. NO es la variable objetivo del modelo de regresion."""
     congestionado = pct_detenido + pct_lento
     if congestionado >= 0.70:
         return "ALTO"
@@ -161,19 +157,13 @@ def procesar_pings(df_raw):
     df = df.drop_duplicates(subset=["device_id", "timestamp"])
     print("[INFO] Duplicados eliminados:", antes - len(df))
 
-    # Hora y fecha real Tarija
     df["hora"] = df["timestamp"].dt.tz_convert("America/La_Paz").dt.hour
     df["dia_semana"] = df["timestamp"].dt.tz_convert("America/La_Paz").dt.dayofweek
     df["fecha"] = df["timestamp"].dt.tz_convert("America/La_Paz").dt.date
 
-    # Cargar SENAMHI antes de construir fecha_clima, para saber qué año(s) tiene disponible
     clima = cargar_senamhi()
     anios_clima = pd.to_datetime(clima["fecha"]).apply(lambda d: d.year)
-    anio_clima_default = int(anios_clima.mode()[0])  # año más frecuente en SENAMHI
-
-    # Buscar clima del mismo día/mes, usando el año disponible en SENAMHI
-    # (proxy estacional: el GPS puede ser de un año sin registro climático propio).
-    # NOTA: si el año del GPS coincide con un año presente en SENAMHI, se usa ese mismo año.
+    anio_clima_default = int(anios_clima.mode()[0])
     anios_disponibles = set(anios_clima.unique())
 
     def mapear_fecha_clima(fecha_gps):
@@ -181,13 +171,10 @@ def procesar_pings(df_raw):
         try:
             return fecha_gps.replace(year=anio)
         except ValueError:
-            # 29 de febrero u otro caso límite
             return fecha_gps.replace(year=anio, day=28)
 
     df["fecha_clima"] = pd.to_datetime(df["fecha"]).apply(mapear_fecha_clima).dt.date
 
-    # Asignar tramo + zona (filtra automáticamente todo lo que no esté
-    # dentro de ~45m de alguno de los 16 puntos de control)
     df[["tramo", "zona"]] = df.apply(
         lambda r: pd.Series(asignar_tramo(r["lat"], r["lng"])), axis=1
     )
@@ -195,7 +182,6 @@ def procesar_pings(df_raw):
     df = df.dropna(subset=["tramo"])
     print("[INFO] GPS dentro de los 16 puntos de control (8 tramos):", len(df))
 
-    # Integrar SENAMHI
     df = df.merge(
         clima[["fecha", "temperatura_max", "temperatura_min", "precipitacion"]],
         left_on="fecha_clima",
@@ -208,7 +194,6 @@ def procesar_pings(df_raw):
     print("[INFO] Clima agregado:")
     print(df[["temperatura_max", "temperatura_min", "precipitacion"]].notnull().sum())
 
-    # Velocidad → estado
     def clasificar(speed):
         if speed == 0:
             return "DETENIDO"
@@ -224,12 +209,11 @@ def procesar_pings(df_raw):
     return df
 
 
-# ── Agregación ───────────────────────────────────────────────────────────────
+# ── Etapa 3 + 4: estado del tramo por hora REAL (serie temporal verdadera) ──
 
 
-def agregar_franjas(df):
-    # Granularidad por TRAMO (no por zona): hasta 8 filas por hora/día
-    group = df.groupby(["tramo", "zona", "dia_semana", "hora"])
+def agregar_por_tramo_fecha_hora(df):
+    group = df.groupby(["tramo", "zona", "fecha", "dia_semana", "hora"])
 
     agg = group.agg(
         total_registros=("speed", "count"),
@@ -238,50 +222,86 @@ def agregar_franjas(df):
         pct_lento=("estado", lambda x: (x == "LENTO").sum() / len(x)),
         pct_normal=("estado", lambda x: (x == "NORMAL").sum() / len(x)),
         pct_fluido=("estado", lambda x: (x == "FLUIDO").sum() / len(x)),
-        dias_observados=("fecha", "nunique"),
         temperatura_max=("temperatura_max", "mean"),
         temperatura_min=("temperatura_min", "mean"),
         precipitacion=("precipitacion", "mean"),
     ).reset_index()
 
     agg["pct_congestion"] = (agg["pct_detenido"] + agg["pct_lento"]).round(4)
-
     agg["nivel_congestion"] = agg.apply(
         lambda r: nivel_congestion(r["pct_detenido"], r["pct_lento"]), axis=1
     )
-
     agg["es_hora_pico"] = agg["hora"].apply(
         lambda h: 1 if h in range(7, 9) or h in range(17, 20) else 0
     )
 
     zona_map = {z: i for i, z in enumerate(sorted(agg["zona"].unique()))}
-    agg["zona_cod"] = agg["zona"].map(zona_map)
-
     tramo_map = {t: i for i, t in enumerate(sorted(agg["tramo"].unique()))}
+    agg["zona_cod"] = agg["zona"].map(zona_map)
     agg["tramo_cod"] = agg["tramo"].map(tramo_map)
 
-    print("\n[INFO] Franjas (tramo x dia_semana x hora):", len(agg))
+    agg = agg.sort_values(["tramo", "fecha", "hora"]).reset_index(drop=True)
+    print(f"\n[INFO] Filas tramo x fecha x hora (serie real): {len(agg)}")
     return agg
+
+
+# ── Etapa 5 (variables derivadas) + Etapa 6 (variable objetivo) ────────────
+
+
+def construir_variables_derivadas(agg):
+    agg = agg.copy()
+    grp = agg.groupby(["tramo", "fecha"])
+
+    # --- Etapa 5: lags / promedio movil / tendencia ---
+    agg["velocidad_hora_anterior"] = grp["speed_promedio"].shift(1)
+    agg["hora_anterior_obs"] = grp["hora"].shift(1)
+    agg["gap_anterior_horas"] = agg["hora"] - agg["hora_anterior_obs"]
+
+    agg["promedio_movil_2"] = (
+        grp["speed_promedio"].shift(1).rolling(2, min_periods=1).mean().reset_index(drop=True)
+    )
+    agg["promedio_movil_3"] = (
+        grp["speed_promedio"].shift(1).rolling(3, min_periods=1).mean().reset_index(drop=True)
+    )
+
+    agg["tendencia"] = agg["speed_promedio"] - agg["velocidad_hora_anterior"]
+
+    # --- Etapa 6: variable objetivo (velocidad de la SIGUIENTE observacion) ---
+    agg["velocidad_siguiente"] = grp["speed_promedio"].shift(-1)
+    agg["hora_siguiente_obs"] = grp["hora"].shift(-1)
+    agg["gap_siguiente_horas"] = agg["hora_siguiente_obs"] - agg["hora"]
+
+    antes = len(agg)
+    agg = agg.dropna(subset=["velocidad_siguiente"])
+    agg = agg[agg["gap_siguiente_horas"] <= GAP_MAXIMO_HORAS]
+    print(f"[INFO] Filas con objetivo valido (gap <= {GAP_MAXIMO_HORAS}h): {len(agg)} de {antes}")
+    print("[INFO] Distribucion de gap_siguiente_horas:")
+    print(agg["gap_siguiente_horas"].value_counts().sort_index())
+
+    return agg.reset_index(drop=True)
 
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
 
 
 def main():
-    print("=" * 50)
-    print("Construcción dataset GPS + SENAMHI (por tramo)")
-    print("=" * 50)
+    print("=" * 55)
+    print("Construccion dataset GPS + SENAMHI (serie temporal por tramo)")
+    print("=" * 55)
 
     registros = cargar_batches()
     df_raw = pd.DataFrame(registros)
 
     df_pings = procesar_pings(df_raw)
-    df_final = agregar_franjas(df_pings)
+    agg = agregar_por_tramo_fecha_hora(df_pings)
+    df_final = construir_variables_derivadas(agg)
 
     df_final.to_csv(OUT_FILE, index=False)
 
-    print("[OK] Dataset generado:", OUT_FILE)
-    print(df_final.head())
+    print("\n[OK] Dataset generado:", OUT_FILE)
+    print(df_final[["tramo", "fecha", "hora", "speed_promedio",
+                     "velocidad_hora_anterior", "velocidad_siguiente",
+                     "gap_siguiente_horas"]].head(10))
 
 
 if __name__ == "__main__":

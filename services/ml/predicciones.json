@@ -5,189 +5,111 @@
     "dia_semana": 1,
     "dia_nombre": "Martes",
     "hora": 15,
+    "velocidad_actual": 21.5,
+    "velocidad_predicha_siguiente": 20.98,
+    "velocidad_libre_tramo": 24.98,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.028,
-      "BAJO": 0.958,
-      "MEDIO": 0.014
-    },
-    "registros": 1,
-    "dias_observados": 1,
+    "pct_congestion": 16.0,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A1",
-    "zona": "mercado_campesino",
-    "dia_semana": 1,
-    "dia_nombre": "Martes",
-    "hora": 17,
-    "nivel": "MEDIO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.005,
-      "BAJO": 0.037,
-      "MEDIO": 0.958
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 16.2,
-    "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 2
   },
   {
     "tramo": "MC_A1",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.009,
-      "BAJO": 0.899,
-      "MEDIO": 0.092
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "velocidad_actual": 17.8,
+    "velocidad_predicha_siguiente": 12.89,
+    "velocidad_libre_tramo": 24.98,
+    "nivel": "MEDIO",
+    "pct_congestion": 48.4,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 5
   },
   {
     "tramo": "MC_A1",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 8,
+    "velocidad_actual": 13.67,
+    "velocidad_predicha_siguiente": 14.62,
+    "velocidad_libre_tramo": 24.98,
     "nivel": "BAJO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.038,
-      "BAJO": 0.911,
-      "MEDIO": 0.051
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 41.5,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 6
   },
   {
     "tramo": "MC_A1",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 9,
-    "nivel": "BAJO",
-    "pct_congestion": 25.0,
-    "probabilidades": {
-      "ALTO": 0.061,
-      "BAJO": 0.894,
-      "MEDIO": 0.045
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "velocidad_actual": 16.75,
+    "velocidad_predicha_siguiente": 8.14,
+    "velocidad_libre_tramo": 24.98,
+    "nivel": "MEDIO",
+    "pct_congestion": 67.4,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "MC_A1",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
-    "nivel": "ALTO",
-    "pct_congestion": 80.0,
-    "probabilidades": {
-      "ALTO": 0.993,
-      "BAJO": 0.004,
-      "MEDIO": 0.003
-    },
-    "registros": 10,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A1",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 16,
+    "velocidad_actual": 24.67,
+    "velocidad_predicha_siguiente": 16.27,
+    "velocidad_libre_tramo": 24.98,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.04,
-      "BAJO": 0.942,
-      "MEDIO": 0.018
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 34.9,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "MC_A1",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 17,
-    "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.04,
-      "BAJO": 0.045,
-      "MEDIO": 0.915
-    },
-    "registros": 4,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A1",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 18,
+    "velocidad_actual": 17.0,
+    "velocidad_predicha_siguiente": 17.72,
+    "velocidad_libre_tramo": 24.98,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.011,
-      "BAJO": 0.81,
-      "MEDIO": 0.179
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 29.1,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "MC_A1",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
-    "nivel": "MEDIO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.003,
-      "BAJO": 0.15,
-      "MEDIO": 0.847
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "dia_nombre": "Miercoles",
+    "hora": 18,
+    "velocidad_actual": 25.67,
+    "velocidad_predicha_siguiente": 16.18,
+    "velocidad_libre_tramo": 24.98,
+    "nivel": "BAJO",
+    "pct_congestion": 35.2,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "MC_A1",
@@ -195,37 +117,15 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
+    "velocidad_actual": 25.0,
+    "velocidad_predicha_siguiente": 15.86,
+    "velocidad_libre_tramo": 24.98,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.002,
-      "BAJO": 0.966,
-      "MEDIO": 0.032
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 36.5,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A1",
-    "zona": "mercado_campesino",
-    "dia_semana": 6,
-    "dia_nombre": "Domingo",
-    "hora": 7,
-    "nivel": "MEDIO",
-    "pct_congestion": 60.0,
-    "probabilidades": {
-      "ALTO": 0.04,
-      "BAJO": 0.067,
-      "MEDIO": 0.893
-    },
-    "registros": 5,
-    "dias_observados": 1,
-    "temperatura_max": 29.1,
-    "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "MC_A2",
@@ -233,189 +133,111 @@
     "dia_semana": 1,
     "dia_nombre": "Martes",
     "hora": 15,
+    "velocidad_actual": 2.34,
+    "velocidad_predicha_siguiente": 7.21,
+    "velocidad_libre_tramo": 5.6,
     "nivel": "ALTO",
-    "pct_congestion": 80.0,
-    "probabilidades": {
-      "ALTO": 0.998,
-      "BAJO": 0.0,
-      "MEDIO": 0.002
-    },
-    "registros": 10,
-    "dias_observados": 1,
+    "pct_congestion": 0.0,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A2",
-    "zona": "mercado_campesino",
-    "dia_semana": 1,
-    "dia_nombre": "Martes",
-    "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 90.0,
-    "probabilidades": {
-      "ALTO": 0.976,
-      "BAJO": 0.0,
-      "MEDIO": 0.024
-    },
-    "registros": 10,
-    "dias_observados": 1,
-    "temperatura_max": 16.2,
-    "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 35
   },
   {
     "tramo": "MC_A2",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
-    "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.084,
-      "BAJO": 0.021,
-      "MEDIO": 0.895
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "velocidad_actual": 1.65,
+    "velocidad_predicha_siguiente": 3.63,
+    "velocidad_libre_tramo": 5.6,
+    "nivel": "ALTO",
+    "pct_congestion": 35.2,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 26
   },
   {
     "tramo": "MC_A2",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 8,
+    "velocidad_actual": 9.0,
+    "velocidad_predicha_siguiente": 2.02,
+    "velocidad_libre_tramo": 5.6,
     "nivel": "ALTO",
-    "pct_congestion": 80.0,
-    "probabilidades": {
-      "ALTO": 0.986,
-      "BAJO": 0.001,
-      "MEDIO": 0.013
-    },
-    "registros": 5,
-    "dias_observados": 1,
+    "pct_congestion": 64.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 7
   },
   {
     "tramo": "MC_A2",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 9,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.745,
-      "BAJO": 0.013,
-      "MEDIO": 0.242
-    },
-    "registros": 2,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A2",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
-    "nivel": "ALTO",
-    "pct_congestion": 75.0,
-    "probabilidades": {
-      "ALTO": 0.998,
-      "BAJO": 0.0,
-      "MEDIO": 0.002
-    },
-    "registros": 8,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A2",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 16,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.925,
-      "BAJO": 0.048,
-      "MEDIO": 0.028
-    },
-    "registros": 4,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A2",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.992,
-      "BAJO": 0.0,
-      "MEDIO": 0.008
-    },
-    "registros": 7,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A2",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 18,
+    "velocidad_actual": 0.78,
+    "velocidad_predicha_siguiente": 8.94,
+    "velocidad_libre_tramo": 5.6,
     "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.103,
-      "BAJO": 0.119,
-      "MEDIO": 0.779
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 0.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 18
   },
   {
     "tramo": "MC_A2",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
-    "nivel": "ALTO",
-    "pct_congestion": 94.4,
-    "probabilidades": {
-      "ALTO": 0.965,
-      "BAJO": 0.001,
-      "MEDIO": 0.034
-    },
-    "registros": 18,
-    "dias_observados": 1,
+    "dia_nombre": "Miercoles",
+    "hora": 16,
+    "velocidad_actual": 1.9,
+    "velocidad_predicha_siguiente": 8.59,
+    "velocidad_libre_tramo": 5.6,
+    "nivel": "MEDIO",
+    "pct_congestion": 0.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 29
+  },
+  {
+    "tramo": "MC_A2",
+    "zona": "mercado_campesino",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 17,
+    "velocidad_actual": 5.67,
+    "velocidad_predicha_siguiente": 3.8,
+    "velocidad_libre_tramo": 5.6,
+    "nivel": "ALTO",
+    "pct_congestion": 32.1,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 9
+  },
+  {
+    "tramo": "MC_A2",
+    "zona": "mercado_campesino",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 18,
+    "velocidad_actual": 3.79,
+    "velocidad_predicha_siguiente": 5.25,
+    "velocidad_libre_tramo": 5.6,
+    "nivel": "ALTO",
+    "pct_congestion": 6.2,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 14
   },
   {
     "tramo": "MC_A2",
@@ -423,37 +245,15 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
-    "nivel": "MEDIO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.04,
-      "BAJO": 0.142,
-      "MEDIO": 0.818
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 29.1,
-    "temperatura_min": 0.2,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A2",
-    "zona": "mercado_campesino",
-    "dia_semana": 6,
-    "dia_nombre": "Domingo",
-    "hora": 7,
+    "velocidad_actual": 4.3,
+    "velocidad_predicha_siguiente": 4.92,
+    "velocidad_libre_tramo": 5.6,
     "nivel": "ALTO",
-    "pct_congestion": 93.8,
-    "probabilidades": {
-      "ALTO": 0.904,
-      "BAJO": 0.003,
-      "MEDIO": 0.094
-    },
-    "registros": 16,
-    "dias_observados": 1,
+    "pct_congestion": 12.2,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 20
   },
   {
     "tramo": "MC_A3",
@@ -461,189 +261,111 @@
     "dia_semana": 1,
     "dia_nombre": "Martes",
     "hora": 15,
+    "velocidad_actual": 6.67,
+    "velocidad_predicha_siguiente": 8.42,
+    "velocidad_libre_tramo": 13.68,
     "nivel": "MEDIO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.286,
-      "BAJO": 0.217,
-      "MEDIO": 0.498
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 38.4,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A3",
-    "zona": "mercado_campesino",
-    "dia_semana": 1,
-    "dia_nombre": "Martes",
-    "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.859,
-      "BAJO": 0.005,
-      "MEDIO": 0.136
-    },
-    "registros": 5,
-    "dias_observados": 1,
-    "temperatura_max": 16.2,
-    "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 12
   },
   {
     "tramo": "MC_A3",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
+    "velocidad_actual": 12.25,
+    "velocidad_predicha_siguiente": 10.23,
+    "velocidad_libre_tramo": 13.68,
     "nivel": "MEDIO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.186,
-      "BAJO": 0.015,
-      "MEDIO": 0.799
-    },
-    "registros": 6,
-    "dias_observados": 1,
+    "pct_congestion": 25.2,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 8
   },
   {
     "tramo": "MC_A3",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 8,
-    "nivel": "BAJO",
-    "pct_congestion": 33.3,
-    "probabilidades": {
-      "ALTO": 0.263,
-      "BAJO": 0.601,
-      "MEDIO": 0.136
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "velocidad_actual": 11.7,
+    "velocidad_predicha_siguiente": 10.94,
+    "velocidad_libre_tramo": 13.68,
+    "nivel": "MEDIO",
+    "pct_congestion": 20.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 10
   },
   {
     "tramo": "MC_A3",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 9,
-    "nivel": "ALTO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.502,
-      "BAJO": 0.356,
-      "MEDIO": 0.142
-    },
-    "registros": 4,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A3",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
+    "velocidad_actual": 9.33,
+    "velocidad_predicha_siguiente": 11.56,
+    "velocidad_libre_tramo": 13.68,
     "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.145,
-      "BAJO": 0.13,
-      "MEDIO": 0.725
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 15.4,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 9
   },
   {
     "tramo": "MC_A3",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 16,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.105,
-      "BAJO": 0.864,
-      "MEDIO": 0.031
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A3",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 17,
+    "velocidad_actual": 12.0,
+    "velocidad_predicha_siguiente": 11.42,
+    "velocidad_libre_tramo": 13.68,
     "nivel": "MEDIO",
-    "pct_congestion": 33.3,
-    "probabilidades": {
-      "ALTO": 0.23,
-      "BAJO": 0.384,
-      "MEDIO": 0.386
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 16.5,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 10
   },
   {
     "tramo": "MC_A3",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
+    "hora": 17,
+    "velocidad_actual": 13.86,
+    "velocidad_predicha_siguiente": 10.98,
+    "velocidad_libre_tramo": 13.68,
+    "nivel": "MEDIO",
+    "pct_congestion": 19.7,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 7
+  },
+  {
+    "tramo": "MC_A3",
+    "zona": "mercado_campesino",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
     "hora": 18,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.028,
-      "BAJO": 0.803,
-      "MEDIO": 0.169
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A3",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
+    "velocidad_actual": 13.75,
+    "velocidad_predicha_siguiente": 6.63,
+    "velocidad_libre_tramo": 13.68,
     "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.988,
-      "BAJO": 0.003,
-      "MEDIO": 0.009
-    },
-    "registros": 13,
-    "dias_observados": 1,
+    "pct_congestion": 51.5,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 8
   },
   {
     "tramo": "MC_A3",
@@ -651,37 +373,15 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
-    "nivel": "BAJO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.005,
-      "BAJO": 0.751,
-      "MEDIO": 0.243
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 29.1,
-    "temperatura_min": 0.2,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A3",
-    "zona": "mercado_campesino",
-    "dia_semana": 6,
-    "dia_nombre": "Domingo",
-    "hora": 7,
+    "velocidad_actual": 10.11,
+    "velocidad_predicha_siguiente": 16.49,
+    "velocidad_libre_tramo": 13.68,
     "nivel": "BAJO",
     "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.009,
-      "BAJO": 0.852,
-      "MEDIO": 0.139
-    },
-    "registros": 3,
-    "dias_observados": 1,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 9
   },
   {
     "tramo": "MC_A4",
@@ -689,189 +389,111 @@
     "dia_semana": 1,
     "dia_nombre": "Martes",
     "hora": 15,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.874,
-      "BAJO": 0.051,
-      "MEDIO": 0.075
-    },
-    "registros": 2,
-    "dias_observados": 1,
-    "temperatura_max": 16.2,
-    "temperatura_min": 8.8,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 1,
-    "dia_nombre": "Martes",
-    "hora": 17,
+    "velocidad_actual": 9.33,
+    "velocidad_predicha_siguiente": 13.55,
+    "velocidad_libre_tramo": 9.31,
     "nivel": "MEDIO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.301,
-      "BAJO": 0.068,
-      "MEDIO": 0.631
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 0.0,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "MC_A4",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
-    "nivel": "ALTO",
-    "pct_congestion": 80.0,
-    "probabilidades": {
-      "ALTO": 0.826,
-      "BAJO": 0.007,
-      "MEDIO": 0.167
-    },
-    "registros": 5,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 8,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.999,
-      "BAJO": 0.0,
-      "MEDIO": 0.001
-    },
-    "registros": 7,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 9,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.998,
-      "BAJO": 0.001,
-      "MEDIO": 0.002
-    },
-    "registros": 7,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.988,
-      "BAJO": 0.001,
-      "MEDIO": 0.01
-    },
-    "registros": 5,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 16,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.742,
-      "BAJO": 0.243,
-      "MEDIO": 0.014
-    },
-    "registros": 4,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.664,
-      "BAJO": 0.075,
-      "MEDIO": 0.261
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 18,
+    "velocidad_actual": 8.83,
+    "velocidad_predicha_siguiente": 10.33,
+    "velocidad_libre_tramo": 9.31,
     "nivel": "MEDIO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.281,
-      "BAJO": 0.322,
-      "MEDIO": 0.397
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 0.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 6
   },
   {
     "tramo": "MC_A4",
     "zona": "mercado_campesino",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.988,
-      "BAJO": 0.001,
-      "MEDIO": 0.011
-    },
-    "registros": 21,
-    "dias_observados": 1,
+    "dia_nombre": "Miercoles",
+    "hora": 8,
+    "velocidad_actual": 6.5,
+    "velocidad_predicha_siguiente": 9.44,
+    "velocidad_libre_tramo": 9.31,
+    "nivel": "MEDIO",
+    "pct_congestion": 0.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 8
+  },
+  {
+    "tramo": "MC_A4",
+    "zona": "mercado_campesino",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 9,
+    "velocidad_actual": 6.38,
+    "velocidad_predicha_siguiente": 9.36,
+    "velocidad_libre_tramo": 9.31,
+    "nivel": "MEDIO",
+    "pct_congestion": 0.0,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 8
+  },
+  {
+    "tramo": "MC_A4",
+    "zona": "mercado_campesino",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 16,
+    "velocidad_actual": 7.0,
+    "velocidad_predicha_siguiente": 9.48,
+    "velocidad_libre_tramo": 9.31,
+    "nivel": "MEDIO",
+    "pct_congestion": 0.0,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 5
+  },
+  {
+    "tramo": "MC_A4",
+    "zona": "mercado_campesino",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 17,
+    "velocidad_actual": 11.0,
+    "velocidad_predicha_siguiente": 8.52,
+    "velocidad_libre_tramo": 9.31,
+    "nivel": "MEDIO",
+    "pct_congestion": 8.5,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 4
+  },
+  {
+    "tramo": "MC_A4",
+    "zona": "mercado_campesino",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 18,
+    "velocidad_actual": 7.75,
+    "velocidad_predicha_siguiente": 3.97,
+    "velocidad_libre_tramo": 9.31,
+    "nivel": "ALTO",
+    "pct_congestion": 57.3,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "MC_A4",
@@ -879,37 +501,15 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
-    "nivel": "BAJO",
-    "pct_congestion": 75.0,
-    "probabilidades": {
-      "ALTO": 0.195,
-      "BAJO": 0.563,
-      "MEDIO": 0.242
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "velocidad_actual": 6.75,
+    "velocidad_predicha_siguiente": 10.44,
+    "velocidad_libre_tramo": 9.31,
+    "nivel": "MEDIO",
+    "pct_congestion": 0.0,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "MC_A4",
-    "zona": "mercado_campesino",
-    "dia_semana": 6,
-    "dia_nombre": "Domingo",
-    "hora": 7,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.864,
-      "BAJO": 0.008,
-      "MEDIO": 0.127
-    },
-    "registros": 6,
-    "dias_observados": 1,
-    "temperatura_max": 29.1,
-    "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B1",
@@ -917,189 +517,111 @@
     "dia_semana": 1,
     "dia_nombre": "Martes",
     "hora": 15,
+    "velocidad_actual": 21.5,
+    "velocidad_predicha_siguiente": 25.22,
+    "velocidad_libre_tramo": 25.6,
     "nivel": "BAJO",
-    "pct_congestion": 33.3,
-    "probabilidades": {
-      "ALTO": 0.003,
-      "BAJO": 0.977,
-      "MEDIO": 0.02
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 1.5,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B1",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 1,
-    "dia_nombre": "Martes",
-    "hora": 17,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.1,
-      "BAJO": 0.758,
-      "MEDIO": 0.142
-    },
-    "registros": 1,
-    "dias_observados": 1,
-    "temperatura_max": 16.2,
-    "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B1",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
-    "nivel": "MEDIO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.013,
-      "BAJO": 0.375,
-      "MEDIO": 0.612
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "velocidad_actual": 34.33,
+    "velocidad_predicha_siguiente": 22.57,
+    "velocidad_libre_tramo": 25.6,
+    "nivel": "BAJO",
+    "pct_congestion": 11.8,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "RSM_B1",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 8,
+    "velocidad_actual": 25.75,
+    "velocidad_predicha_siguiente": 24.81,
+    "velocidad_libre_tramo": 25.6,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.048,
-      "BAJO": 0.832,
-      "MEDIO": 0.12
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 3.1,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B1",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 9,
-    "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.016,
-      "BAJO": 0.286,
-      "MEDIO": 0.697
-    },
-    "registros": 2,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B1",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
+    "velocidad_actual": 22.67,
+    "velocidad_predicha_siguiente": 22.39,
+    "velocidad_libre_tramo": 25.6,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.048,
-      "BAJO": 0.828,
-      "MEDIO": 0.124
-    },
-    "registros": 1,
-    "dias_observados": 1,
+    "pct_congestion": 12.5,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "RSM_B1",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 16,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.012,
-      "BAJO": 0.923,
-      "MEDIO": 0.065
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "velocidad_actual": 20.0,
+    "velocidad_predicha_siguiente": 12.19,
+    "velocidad_libre_tramo": 25.6,
+    "nivel": "MEDIO",
+    "pct_congestion": 52.4,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 5
   },
   {
     "tramo": "RSM_B1",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 17,
+    "velocidad_actual": 19.0,
+    "velocidad_predicha_siguiente": 11.94,
+    "velocidad_libre_tramo": 25.6,
     "nivel": "MEDIO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.015,
-      "BAJO": 0.145,
-      "MEDIO": 0.841
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 53.4,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B1",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 18,
-    "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.004,
-      "BAJO": 0.127,
-      "MEDIO": 0.869
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "velocidad_actual": 10.44,
+    "velocidad_predicha_siguiente": 20.46,
+    "velocidad_libre_tramo": 25.6,
+    "nivel": "BAJO",
+    "pct_congestion": 20.1,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B1",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
-    "nivel": "MEDIO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.007,
-      "BAJO": 0.361,
-      "MEDIO": 0.631
-    },
-    "registros": 2,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 9
   },
   {
     "tramo": "RSM_B1",
@@ -1107,37 +629,15 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
-    "nivel": "MEDIO",
-    "pct_congestion": 66.7,
-    "probabilidades": {
-      "ALTO": 0.032,
-      "BAJO": 0.037,
-      "MEDIO": 0.93
-    },
-    "registros": 6,
-    "dias_observados": 1,
-    "temperatura_max": 29.1,
-    "temperatura_min": 0.2,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B1",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 6,
-    "dia_nombre": "Domingo",
-    "hora": 7,
+    "velocidad_actual": 11.43,
+    "velocidad_predicha_siguiente": 16.41,
+    "velocidad_libre_tramo": 25.6,
     "nivel": "BAJO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.003,
-      "BAJO": 0.809,
-      "MEDIO": 0.188
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 35.9,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 7
   },
   {
     "tramo": "RSM_B2",
@@ -1145,189 +645,111 @@
     "dia_semana": 1,
     "dia_nombre": "Martes",
     "hora": 15,
+    "velocidad_actual": 31.75,
+    "velocidad_predicha_siguiente": 25.14,
+    "velocidad_libre_tramo": 25.19,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.062,
-      "BAJO": 0.934,
-      "MEDIO": 0.004
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 0.2,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B2",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 1,
-    "dia_nombre": "Martes",
-    "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.913,
-      "BAJO": 0.084,
-      "MEDIO": 0.003
-    },
-    "registros": 1,
-    "dias_observados": 1,
-    "temperatura_max": 16.2,
-    "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B2",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.058,
-      "BAJO": 0.919,
-      "MEDIO": 0.023
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "velocidad_actual": 19.33,
+    "velocidad_predicha_siguiente": 12.77,
+    "velocidad_libre_tramo": 25.19,
+    "nivel": "MEDIO",
+    "pct_congestion": 49.3,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 6
   },
   {
     "tramo": "RSM_B2",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 8,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.707,
-      "BAJO": 0.232,
-      "MEDIO": 0.061
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "velocidad_actual": 7.67,
+    "velocidad_predicha_siguiente": 22.45,
+    "velocidad_libre_tramo": 25.19,
+    "nivel": "BAJO",
+    "pct_congestion": 10.9,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "RSM_B2",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 9,
+    "velocidad_actual": 24.33,
+    "velocidad_predicha_siguiente": 14.66,
+    "velocidad_libre_tramo": 25.19,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.323,
-      "BAJO": 0.646,
-      "MEDIO": 0.031
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 41.8,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "RSM_B2",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.759,
-      "BAJO": 0.238,
-      "MEDIO": 0.003
-    },
-    "registros": 1,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B2",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 16,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.047,
-      "BAJO": 0.949,
-      "MEDIO": 0.004
-    },
-    "registros": 4,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B2",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 17,
+    "velocidad_actual": 25.2,
+    "velocidad_predicha_siguiente": 7.69,
+    "velocidad_libre_tramo": 25.19,
     "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.946,
-      "BAJO": 0.052,
-      "MEDIO": 0.002
-    },
-    "registros": 1,
-    "dias_observados": 1,
+    "pct_congestion": 69.5,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 5
   },
   {
     "tramo": "RSM_B2",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
+    "hora": 17,
+    "velocidad_actual": 2.5,
+    "velocidad_predicha_siguiente": 16.78,
+    "velocidad_libre_tramo": 25.19,
+    "nivel": "BAJO",
+    "pct_congestion": 33.4,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 8
+  },
+  {
+    "tramo": "RSM_B2",
+    "zona": "rotonda_san_martin",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
     "hora": 18,
-    "nivel": "BAJO",
-    "pct_congestion": 25.0,
-    "probabilidades": {
-      "ALTO": 0.088,
-      "BAJO": 0.855,
-      "MEDIO": 0.057
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "velocidad_actual": 16.14,
+    "velocidad_predicha_siguiente": 5.42,
+    "velocidad_libre_tramo": 25.19,
+    "nivel": "ALTO",
+    "pct_congestion": 78.5,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B2",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
-    "nivel": "BAJO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.097,
-      "BAJO": 0.602,
-      "MEDIO": 0.301
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 7
   },
   {
     "tramo": "RSM_B2",
@@ -1335,132 +757,111 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
+    "velocidad_actual": 25.0,
+    "velocidad_predicha_siguiente": 21.22,
+    "velocidad_libre_tramo": 25.19,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.005,
-      "BAJO": 0.981,
-      "MEDIO": 0.015
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "pct_congestion": 15.7,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B3",
     "zona": "rotonda_san_martin",
     "dia_semana": 1,
     "dia_nombre": "Martes",
-    "hora": 17,
+    "hora": 15,
+    "velocidad_actual": 11.25,
+    "velocidad_predicha_siguiente": 7.66,
+    "velocidad_libre_tramo": 29.6,
     "nivel": "ALTO",
-    "pct_congestion": 90.0,
-    "probabilidades": {
-      "ALTO": 0.997,
-      "BAJO": 0.001,
-      "MEDIO": 0.002
-    },
-    "registros": 10,
-    "dias_observados": 1,
+    "pct_congestion": 74.1,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B3",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
-    "nivel": "ALTO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.911,
-      "BAJO": 0.063,
-      "MEDIO": 0.026
-    },
-    "registros": 1,
-    "dias_observados": 1,
+    "velocidad_actual": 22.75,
+    "velocidad_predicha_siguiente": 14.35,
+    "velocidad_libre_tramo": 29.6,
+    "nivel": "MEDIO",
+    "pct_congestion": 51.5,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B3",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 8,
-    "nivel": "ALTO",
-    "pct_congestion": 80.0,
-    "probabilidades": {
-      "ALTO": 0.992,
-      "BAJO": 0.003,
-      "MEDIO": 0.006
-    },
-    "registros": 5,
-    "dias_observados": 1,
+    "velocidad_actual": 10.17,
+    "velocidad_predicha_siguiente": 14.55,
+    "velocidad_libre_tramo": 29.6,
+    "nivel": "BAJO",
+    "pct_congestion": 50.8,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 6
   },
   {
     "tramo": "RSM_B3",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
+    "dia_nombre": "Miercoles",
+    "hora": 16,
+    "velocidad_actual": 38.0,
+    "velocidad_predicha_siguiente": 5.7,
+    "velocidad_libre_tramo": 29.6,
     "nivel": "ALTO",
-    "pct_congestion": 75.0,
-    "probabilidades": {
-      "ALTO": 0.86,
-      "BAJO": 0.132,
-      "MEDIO": 0.008
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "pct_congestion": 80.7,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 2
   },
   {
     "tramo": "RSM_B3",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 91.7,
-    "probabilidades": {
-      "ALTO": 0.998,
-      "BAJO": 0.001,
-      "MEDIO": 0.001
-    },
-    "registros": 12,
-    "dias_observados": 1,
+    "velocidad_actual": 4.67,
+    "velocidad_predicha_siguiente": 17.4,
+    "velocidad_libre_tramo": 29.6,
+    "nivel": "BAJO",
+    "pct_congestion": 41.2,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 15
   },
   {
     "tramo": "RSM_B3",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
+    "dia_nombre": "Miercoles",
+    "hora": 18,
+    "velocidad_actual": 19.0,
+    "velocidad_predicha_siguiente": 5.71,
+    "velocidad_libre_tramo": 29.6,
     "nivel": "ALTO",
-    "pct_congestion": 85.7,
-    "probabilidades": {
-      "ALTO": 0.974,
-      "BAJO": 0.001,
-      "MEDIO": 0.025
-    },
-    "registros": 7,
-    "dias_observados": 1,
+    "pct_congestion": 80.7,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 5
   },
   {
     "tramo": "RSM_B3",
@@ -1468,37 +869,15 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
+    "velocidad_actual": 28.67,
+    "velocidad_predicha_siguiente": 23.13,
+    "velocidad_libre_tramo": 29.6,
     "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.005,
-      "BAJO": 0.975,
-      "MEDIO": 0.02
-    },
-    "registros": 2,
-    "dias_observados": 1,
+    "pct_congestion": 21.9,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B3",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 6,
-    "dia_nombre": "Domingo",
-    "hora": 7,
-    "nivel": "BAJO",
-    "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.025,
-      "BAJO": 0.944,
-      "MEDIO": 0.031
-    },
-    "registros": 2,
-    "dias_observados": 1,
-    "temperatura_max": 29.1,
-    "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "RSM_B4",
@@ -1506,189 +885,111 @@
     "dia_semana": 1,
     "dia_nombre": "Martes",
     "hora": 15,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.786,
-      "BAJO": 0.207,
-      "MEDIO": 0.007
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "velocidad_actual": 4.25,
+    "velocidad_predicha_siguiente": 8.05,
+    "velocidad_libre_tramo": 15.53,
+    "nivel": "MEDIO",
+    "pct_congestion": 48.1,
     "temperatura_max": 16.2,
     "temperatura_min": 8.8,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B4",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 1,
-    "dia_nombre": "Martes",
-    "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 88.9,
-    "probabilidades": {
-      "ALTO": 0.996,
-      "BAJO": 0.001,
-      "MEDIO": 0.003
-    },
-    "registros": 9,
-    "dias_observados": 1,
-    "temperatura_max": 16.2,
-    "temperatura_min": 8.8,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 4
   },
   {
     "tramo": "RSM_B4",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 7,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.7,
-      "BAJO": 0.071,
-      "MEDIO": 0.229
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B4",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 8,
-    "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.25,
-      "BAJO": 0.033,
-      "MEDIO": 0.717
-    },
-    "registros": 2,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B4",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 9,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.793,
-      "BAJO": 0.188,
-      "MEDIO": 0.019
-    },
-    "registros": 3,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B4",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 10,
+    "velocidad_actual": 1.67,
+    "velocidad_predicha_siguiente": 15.69,
+    "velocidad_libre_tramo": 15.53,
     "nivel": "BAJO",
-    "pct_congestion": 33.3,
-    "probabilidades": {
-      "ALTO": 0.42,
-      "BAJO": 0.561,
-      "MEDIO": 0.018
-    },
-    "registros": 3,
-    "dias_observados": 1,
+    "pct_congestion": 0.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 3
   },
   {
     "tramo": "RSM_B4",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
+    "hora": 8,
+    "velocidad_actual": 16.0,
+    "velocidad_predicha_siguiente": 6.16,
+    "velocidad_libre_tramo": 15.53,
+    "nivel": "ALTO",
+    "pct_congestion": 60.3,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 4
+  },
+  {
+    "tramo": "RSM_B4",
+    "zona": "rotonda_san_martin",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 9,
+    "velocidad_actual": 0.0,
+    "velocidad_predicha_siguiente": 15.9,
+    "velocidad_libre_tramo": 15.53,
+    "nivel": "BAJO",
+    "pct_congestion": 0.0,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 3
+  },
+  {
+    "tramo": "RSM_B4",
+    "zona": "rotonda_san_martin",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
     "hora": 16,
+    "velocidad_actual": 3.8,
+    "velocidad_predicha_siguiente": 7.46,
+    "velocidad_libre_tramo": 15.53,
     "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.988,
-      "BAJO": 0.005,
-      "MEDIO": 0.006
-    },
-    "registros": 5,
-    "dias_observados": 1,
+    "pct_congestion": 52.0,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 5
   },
   {
     "tramo": "RSM_B4",
     "zona": "rotonda_san_martin",
     "dia_semana": 2,
-    "dia_nombre": "Miércoles",
+    "dia_nombre": "Miercoles",
     "hora": 17,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.996,
-      "BAJO": 0.001,
-      "MEDIO": 0.003
-    },
-    "registros": 8,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B4",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 18,
-    "nivel": "ALTO",
-    "pct_congestion": 100.0,
-    "probabilidades": {
-      "ALTO": 0.715,
-      "BAJO": 0.041,
-      "MEDIO": 0.244
-    },
-    "registros": 4,
-    "dias_observados": 1,
-    "temperatura_max": 20.0,
-    "temperatura_min": 8.7,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B4",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 2,
-    "dia_nombre": "Miércoles",
-    "hora": 19,
+    "velocidad_actual": 6.67,
+    "velocidad_predicha_siguiente": 8.45,
+    "velocidad_libre_tramo": 15.53,
     "nivel": "MEDIO",
-    "pct_congestion": 50.0,
-    "probabilidades": {
-      "ALTO": 0.229,
-      "BAJO": 0.013,
-      "MEDIO": 0.758
-    },
-    "registros": 4,
-    "dias_observados": 1,
+    "pct_congestion": 45.6,
     "temperatura_max": 20.0,
     "temperatura_min": 8.7,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 9
+  },
+  {
+    "tramo": "RSM_B4",
+    "zona": "rotonda_san_martin",
+    "dia_semana": 2,
+    "dia_nombre": "Miercoles",
+    "hora": 18,
+    "velocidad_actual": 1.6,
+    "velocidad_predicha_siguiente": 5.38,
+    "velocidad_libre_tramo": 15.53,
+    "nivel": "ALTO",
+    "pct_congestion": 65.4,
+    "temperatura_max": 20.0,
+    "temperatura_min": 8.7,
+    "precipitacion": 0.0,
+    "registros": 5
   },
   {
     "tramo": "RSM_B4",
@@ -1696,36 +997,14 @@
     "dia_semana": 6,
     "dia_nombre": "Domingo",
     "hora": 6,
+    "velocidad_actual": 23.0,
+    "velocidad_predicha_siguiente": 15.82,
+    "velocidad_libre_tramo": 15.53,
     "nivel": "BAJO",
     "pct_congestion": 0.0,
-    "probabilidades": {
-      "ALTO": 0.027,
-      "BAJO": 0.944,
-      "MEDIO": 0.029
-    },
-    "registros": 1,
-    "dias_observados": 1,
     "temperatura_max": 29.1,
     "temperatura_min": 0.2,
-    "precipitacion": 0.0
-  },
-  {
-    "tramo": "RSM_B4",
-    "zona": "rotonda_san_martin",
-    "dia_semana": 6,
-    "dia_nombre": "Domingo",
-    "hora": 7,
-    "nivel": "MEDIO",
-    "pct_congestion": 40.0,
-    "probabilidades": {
-      "ALTO": 0.128,
-      "BAJO": 0.022,
-      "MEDIO": 0.85
-    },
-    "registros": 5,
-    "dias_observados": 1,
-    "temperatura_max": 29.1,
-    "temperatura_min": 0.2,
-    "precipitacion": 0.0
+    "precipitacion": 0.0,
+    "registros": 1
   }
 ]

@@ -337,7 +337,7 @@
 
       <div class="zona-card" id="card-mercado">
         <div class="zona-header">
-          <span class="zona-nombre">Mercado Campesino</span>
+          <span class="zona-nombre">Zona A — Mercado Campesino</span>
           <span class="nivel-badge" id="badge-mercado">—</span>
         </div>
         <div class="pct-value" id="pct-mercado">—</div>
@@ -349,7 +349,7 @@
 
       <div class="zona-card" id="card-rotonda">
         <div class="zona-header">
-          <span class="zona-nombre">Rotonda San Martín</span>
+          <span class="zona-nombre">Zona B — Rotonda San Martín</span>
           <span class="nivel-badge" id="badge-rotonda">—</span>
         </div>
         <div class="pct-value" id="pct-rotonda">—</div>
@@ -467,7 +467,7 @@
           <div style="font-family:'Segoe UI', sans-serif; font-size:12px; color:#1e293b;">
             <b style="color:#0f1e3a; font-size:13px;">Tramo de Inspección:</b><br>${v.nombre_tramo}<br><br>
             Nivel de Congestión: <span style="color:${v.color}; font-weight:bold;">${v.nivel}</span><br>
-            Densidad de Ocupación Est.: <b>${v.pct}%</b><br>
+            Vel. predicha próx. hora: <b>${v.velocidad_predicha} km/h</b><br>Vel. libre del tramo: <b>${v.velocidad_libre_tramo} km/h</b><br>Congestión estimada: <b>${v.pct}%</b><br>
             ${climaLinea}
           </div>
         `);

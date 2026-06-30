@@ -142,7 +142,7 @@ def procesar_lotes_s3():
 
     # Acumulador de velocidades por tramo (8 tramos)
     metricas_tramos = {t["id_tramo"]: [] for t in TRAMOS}
-    RADIO_TOLERANCIA_METROS = 45.0
+    RADIO_TOLERANCIA_METROS = 100.0
 
     for ruta_archivo in archivos_json:
         with open(ruta_archivo, 'r') as f:
