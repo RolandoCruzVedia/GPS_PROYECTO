@@ -1,0 +1,26 @@
+{
+  "modelo_ganador": "XGBoost",
+  "busqueda": {
+    "Random Forest": {
+      "parametros": {
+        "n_estimators": 300,
+        "min_samples_split": 5,
+        "min_samples_leaf": 2,
+        "max_features": "sqrt",
+        "max_depth": null
+      },
+      "mae_cv": 5.175
+    },
+    "XGBoost": {
+      "parametros": {
+        "subsample": 1.0,
+        "n_estimators": 100,
+        "min_child_weight": 5,
+        "max_depth": 3,
+        "learning_rate": 0.03,
+        "colsample_bytree": 0.8
+      },
+      "mae_cv": 5.751
+    }
+  }
+}

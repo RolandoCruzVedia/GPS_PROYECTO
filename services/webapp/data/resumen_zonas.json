@@ -1,14 +1,14 @@
 {
     "Mercado Campesino": {
         "congestion": "ALTO",
-        "velocidad_promedio_kmh": 6.27,
-        "pct_congestion": 84.3,
-        "muestras": 849
+        "velocidad_promedio_kmh": 5.63,
+        "pct_congestion": 85.9,
+        "muestras": 1029
     },
     "Rotonda San Martín": {
         "congestion": "MEDIO",
-        "velocidad_promedio_kmh": 12.24,
-        "pct_congestion": 69.4,
-        "muestras": 480
+        "velocidad_promedio_kmh": 11.82,
+        "pct_congestion": 70.5,
+        "muestras": 521
     }
 }

@@ -7,9 +7,7 @@
                 "id_tramo": "MC_A1",
                 "zona": "Mercado Campesino",
                 "p_inicio": "A.1_inicio",
-                "p_fin": "A.1_fin",
-                "congestion": "MEDIO",
-                "velocidad_promedio_kmh": 10.59
+                "p_fin": "A.1_fin"
             },
             "geometry": {
                 "type": "LineString",
@@ -39,9 +37,7 @@
                 "id_tramo": "MC_A2",
                 "zona": "Mercado Campesino",
                 "p_inicio": "A.2_inicio",
-                "p_fin": "A.2_fin",
-                "congestion": "ALTO",
-                "velocidad_promedio_kmh": 4.51
+                "p_fin": "A.2_fin"
             },
             "geometry": {
                 "type": "LineString",
@@ -71,9 +67,7 @@
                 "id_tramo": "MC_A3",
                 "zona": "Mercado Campesino",
                 "p_inicio": "A.3_inicio",
-                "p_fin": "A.3_fin",
-                "congestion": "ALTO",
-                "velocidad_promedio_kmh": 5.22
+                "p_fin": "A.3_fin"
             },
             "geometry": {
                 "type": "LineString",
@@ -103,9 +97,7 @@
                 "id_tramo": "MC_A4",
                 "zona": "Mercado Campesino",
                 "p_inicio": "A.4_inicio",
-                "p_fin": "A.4_fin",
-                "congestion": "ALTO",
-                "velocidad_promedio_kmh": 7.9
+                "p_fin": "A.4_fin"
             },
             "geometry": {
                 "type": "LineString",
@@ -131,9 +123,7 @@
                 "id_tramo": "RSM_B1",
                 "zona": "Rotonda San Martín",
                 "p_inicio": "B.1_inicio",
-                "p_fin": "B.1_fin",
-                "congestion": "MEDIO",
-                "velocidad_promedio_kmh": 15.23
+                "p_fin": "B.1_fin"
             },
             "geometry": {
                 "type": "LineString",
@@ -163,9 +153,7 @@
                 "id_tramo": "RSM_B2",
                 "zona": "Rotonda San Martín",
                 "p_inicio": "B.2_inicio",
-                "p_fin": "B.2_fin",
-                "congestion": "MEDIO",
-                "velocidad_promedio_kmh": 10.98
+                "p_fin": "B.2_fin"
             },
             "geometry": {
                 "type": "LineString",
@@ -227,9 +215,7 @@
                 "id_tramo": "RSM_B3",
                 "zona": "Rotonda San Martín",
                 "p_inicio": "B.3_inicio",
-                "p_fin": "B.3_fin",
-                "congestion": "MEDIO",
-                "velocidad_promedio_kmh": 12.45
+                "p_fin": "B.3_fin"
             },
             "geometry": {
                 "type": "LineString",
@@ -275,9 +261,7 @@
                 "id_tramo": "RSM_B4",
                 "zona": "Rotonda San Martín",
                 "p_inicio": "B.4_inicio",
-                "p_fin": "B.4_fin",
-                "congestion": "MEDIO",
-                "velocidad_promedio_kmh": 10.97
+                "p_fin": "B.4_fin"
             },
             "geometry": {
                 "type": "LineString",

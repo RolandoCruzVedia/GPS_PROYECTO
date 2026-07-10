@@ -1,46 +1,49 @@
+"""
+ingestion/parse_batches.py
+
+Genera UNICAMENTE la capa geometrica (vias.geojson) que usa el mapa para
+dibujar los 8 tramos de control, consultando a OSRM la polilinea real
+adaptada a las calles de Tarija entre cada punto de inicio y fin.
+
+IMPORTANTE - separacion de responsabilidades:
+Este script YA NO calcula velocidad promedio ni nivel de congestion por
+tramo. Ese calculo pertenece exclusivamente al pipeline de prediccion:
+
+    build_dataset.py -> generar_sinteticos.py -> train.py -> predicciones.json
+
+El color/nivel de cada tramo que ve el usuario en el mapa lo asigna
+services/webapp/app.py (endpoint /api/vias_trafico) leyendo predicciones.json
+y usando id_tramo como llave — NO se calcula aqui. Este archivo solo aporta
+la geometria (la forma de la linea en el mapa).
+
+Se elimino ademas la generacion de resumen_zonas.json: no era consumido
+por ningun endpoint de app.py (webapp/data/resumen_zonas.json era un
+calculo huerfano, un segundo pipeline de congestion desconectado del
+dashboard real). El panel de zonas ("NIVEL GENERAL" / tarjetas Zona A y B)
+se alimenta de predicciones_zonas.json, generado por train.py.
+"""
+
 import os
 import json
 import requests
-import math
-from datetime import datetime, timedelta, timezone
-
-try:
-    import parse_gps
-except ImportError:
-    parse_gps = None
 
 # --- CONFIGURACIÓN DE RUTAS ---
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# CORREGIDO: los datos crudos están dentro de data/gps, no en toda la carpeta data
-# (data/ también contiene senamhi/, que tiene otro esquema y no debe recorrerse aquí)
-DATA_DIR = os.path.join(BASE_DIR, "data", "gps")
-
 OUTPUT_GEOJSON = os.path.abspath(os.path.join(BASE_DIR, "../webapp/data/vias.geojson"))
-OUTPUT_RESUMEN_ZONAS = os.path.abspath(os.path.join(BASE_DIR, "../webapp/data/resumen_zonas.json"))
 
 OSRM_URL = "https://router.project-osrm.org/route/v1/driving/"
 
-# --- TIMEZONE ---
-# Los timestamps GPS llegan en UTC (+00:00).
-# Los datos de SENAMHI están en horario local de Tarija (UTC-4, Bolivia no usa horario de verano).
-# Convertimos cada punto GPS a hora local de Tarija para que cualquier cruce futuro
-# por fecha/hora con SENAMHI (o con el selector "Día/Hora" del panel) sea consistente.
-TARIJA_OFFSET = timedelta(hours=-4)
-
-def utc_a_tarija(timestamp_str):
-    """Convierte un timestamp ISO en UTC a datetime local de Tarija (naive, sin tzinfo)."""
-    try:
-        dt_utc = datetime.fromisoformat(timestamp_str)
-        if dt_utc.tzinfo is None:
-            dt_utc = dt_utc.replace(tzinfo=timezone.utc)
-        dt_local = dt_utc.astimezone(timezone.utc) + TARIJA_OFFSET
-        return dt_local.replace(tzinfo=None)
-    except Exception:
-        return None
-
 # --- PARAMETRIZACIÓN DE LOS 8 TRAMOS (16 PUNTOS) ---
+#
+# IMPORTANTE: estas coordenadas deben coincidir EXACTAMENTE con las de
+# TRAMOS en services/processing/build_dataset.py. Son los mismos 8
+# segmentos fisicos; si se editan aqui sin editar tambien alla (o
+# viceversa), la geometria dibujada en el mapa (este archivo) dejara de
+# corresponder al segmento real sobre el que se calcula la velocidad y el
+# nivel de congestion (build_dataset.py / predicciones.json). Se recomienda
+# unificar ambas listas en un solo modulo compartido (ej.
+# services/common/tramos.py) para eliminar esta duplicacion de raiz.
 TRAMOS = [
     # --- Zona Mercado Campesino ---
     {
@@ -94,8 +97,9 @@ TRAMOS = [
     }
 ]
 
+
 def obtener_geometria_osrm(p1, p2):
-    """Consulta a OSRM la polilínea exacta adaptada a las calles de Tarija"""
+    """Consulta a OSRM la polilínea exacta adaptada a las calles de Tarija."""
     url = f"{OSRM_URL}{p1['lng']},{p1['lat']};{p2['lng']},{p2['lat']}?overview=full&geometries=geojson"
     try:
         res = requests.get(url, timeout=5).json()
@@ -103,89 +107,25 @@ def obtener_geometria_osrm(p1, p2):
             return res['routes'][0]['geometry']['coordinates']
     except Exception as e:
         print(f"   [!] Error en OSRM para {p1['codigo']}->{p2['codigo']}: {e}")
+    # Fallback: linea recta entre los dos puntos si OSRM falla
     return [[p1['lng'], p1['lat']], [p2['lng'], p2['lat']]]
 
-def calcular_distancia_metros(lat1, lng1, lat2, lng2):
-    """Fórmula de Haversine para distancia entre dos puntos GPS"""
-    R = 6371000
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    dphi = math.radians(lat2 - lat1)
-    dlng = math.radians(lng2 - lng1)
-    a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2) * math.sin(dlng/2)**2
-    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
 
-def clasificar_congestion(velocidades):
-    """Determina nivel de congestión a partir de una lista de velocidades (km/h)"""
-    if not velocidades:
-        return "BAJO", 0.0
-    velocidad_promedio = sum(velocidades) / len(velocidades)
-    if velocidad_promedio < 10.0:
-        return "ALTO", round(velocidad_promedio, 2)
-    elif velocidad_promedio < 22.0:
-        return "MEDIO", round(velocidad_promedio, 2)
-    else:
-        return "BAJO", round(velocidad_promedio, 2)
-
-def procesar_lotes_s3():
-    if not os.path.exists(DATA_DIR):
-        print(f"Error: No se encuentra la carpeta de datos en {DATA_DIR}")
-        return
-
-    archivos_json = []
-    for raiz, carpetas, archivos in os.walk(DATA_DIR):
-        for archivo in archivos:
-            if archivo.endswith(".json"):
-                archivos_json.append(os.path.join(raiz, archivo))
-
-    archivos_json.sort()
-    print(f"\nTotal archivos GPS encontrados: {len(archivos_json)}")
-
-    # Acumulador de velocidades por tramo (8 tramos)
-    metricas_tramos = {t["id_tramo"]: [] for t in TRAMOS}
-    RADIO_TOLERANCIA_METROS = 100.0
-
-    for ruta_archivo in archivos_json:
-        with open(ruta_archivo, 'r') as f:
-            try:
-                puntos_gps = json.load(f)
-                for punto in puntos_gps:
-                    lat = punto.get("lat")
-                    lng = punto.get("lng")
-                    vel = punto.get("speed", 0.0)
-                    ts_utc = punto.get("timestamp")
-
-                    if lat is None or lng is None:
-                        continue
-
-                    # Conversión a hora local de Tarija (queda disponible para
-                    # futuros cruces por fecha/hora con SENAMHI o el panel de predicción)
-                    ts_local = utc_a_tarija(ts_utc) if ts_utc else None
-
-                    # Solo se consideran puntos GPS dentro del radio de alguno
-                    # de los 16 puntos de control (inicio o fin de cada tramo)
-                    for tramo in TRAMOS:
-                        d_inicio = calcular_distancia_metros(lat, lng, tramo["p_inicio"]["lat"], tramo["p_inicio"]["lng"])
-                        d_fin = calcular_distancia_metros(lat, lng, tramo["p_fin"]["lat"], tramo["p_fin"]["lng"])
-
-                        if d_inicio <= RADIO_TOLERANCIA_METROS or d_fin <= RADIO_TOLERANCIA_METROS:
-                            metricas_tramos[tramo["id_tramo"]].append(vel)
-
-            except Exception as e:
-                pass
-
-    # --- Generar GeoJSON con los 8 segmentos, cada uno con su propio color/congestión ---
-    features = []
-    resumen_por_zona = {}  # acumula velocidades combinadas por zona para el panel agregado
-
+def generar_geojson_vias():
+    """
+    Genera vias.geojson con la geometria de los 8 tramos de control.
+    NO calcula velocidad ni nivel de congestion — solo geometria.
+    El nivel/color se asigna en tiempo real en services/webapp/app.py,
+    leyendo predicciones.json (generado por train.py) y cruzando por
+    id_tramo + dia_semana + hora.
+    """
     print("\n==========================================")
     print(" GENERANDO CAPA GEOMETRICA (VIAS.GEOJSON) ")
     print("==========================================")
 
+    features = []
     for tramo in TRAMOS:
-        velocidades = metricas_tramos[tramo["id_tramo"]]
-        print(f"-> Tramo {tramo['id_tramo']} ({tramo['p_inicio']['codigo']} -> {tramo['p_fin']['codigo']}): {len(velocidades)} posiciones registradas.")
-
-        congestion, velocidad_promedio = clasificar_congestion(velocidades)
+        print(f"-> Tramo {tramo['id_tramo']} ({tramo['p_inicio']['codigo']} -> {tramo['p_fin']['codigo']})")
 
         coordenadas_viales = obtener_geometria_osrm(tramo["p_inicio"], tramo["p_fin"])
 
@@ -193,11 +133,9 @@ def procesar_lotes_s3():
             "type": "Feature",
             "properties": {
                 "id_tramo": tramo["id_tramo"],
-                "zona": tramo["zona"],
+                "zona":     tramo["zona"],
                 "p_inicio": tramo["p_inicio"]["codigo"],
-                "p_fin": tramo["p_fin"]["codigo"],
-                "congestion": congestion,
-                "velocidad_promedio_kmh": velocidad_promedio
+                "p_fin":    tramo["p_fin"]["codigo"],
             },
             "geometry": {
                 "type": "LineString",
@@ -205,8 +143,6 @@ def procesar_lotes_s3():
             }
         }
         features.append(feature)
-
-        resumen_por_zona.setdefault(tramo["zona"], []).extend(velocidades)
 
     geojson_final = {
         "type": "FeatureCollection",
@@ -217,27 +153,9 @@ def procesar_lotes_s3():
     with open(OUTPUT_GEOJSON, 'w', encoding='utf-8') as f:
         json.dump(geojson_final, f, ensure_ascii=False, indent=4)
 
-    # --- Resumen agregado por zona (para el panel "NIVEL GENERAL" / tarjetas de zona) ---
-    resumen_zonas_final = {}
-    for zona, velocidades in resumen_por_zona.items():
-        congestion, velocidad_promedio = clasificar_congestion(velocidades)
-        # % de congestión estimado: invertimos la velocidad relativa a un máximo de referencia (40 km/h)
-        VELOCIDAD_REFERENCIA = 40.0
-        pct = max(0.0, min(100.0, round((1 - (velocidad_promedio / VELOCIDAD_REFERENCIA)) * 100, 1))) if velocidades else 0.0
-        resumen_zonas_final[zona] = {
-            "congestion": congestion,
-            "velocidad_promedio_kmh": velocidad_promedio,
-            "pct_congestion": pct,
-            "muestras": len(velocidades)
-        }
-
-    os.makedirs(os.path.dirname(OUTPUT_RESUMEN_ZONAS), exist_ok=True)
-    with open(OUTPUT_RESUMEN_ZONAS, 'w', encoding='utf-8') as f:
-        json.dump(resumen_zonas_final, f, ensure_ascii=False, indent=4)
-
     print(f"\n[!] PROCESO COMPLETADO EXITOSAMENTE.")
-    print(f"Capa de tráfico (8 tramos) exportada en: {OUTPUT_GEOJSON}")
-    print(f"Resumen por zona exportado en: {OUTPUT_RESUMEN_ZONAS}\n")
+    print(f"Capa de tráfico (8 tramos, solo geometria) exportada en: {OUTPUT_GEOJSON}\n")
+
 
 if __name__ == "__main__":
-    procesar_lotes_s3()
+    generar_geojson_vias()
