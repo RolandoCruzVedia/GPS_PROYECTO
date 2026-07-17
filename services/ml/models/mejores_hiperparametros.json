@@ -3,24 +3,24 @@
   "busqueda": {
     "Random Forest": {
       "parametros": {
-        "n_estimators": 300,
+        "n_estimators": 400,
         "min_samples_split": 5,
-        "min_samples_leaf": 2,
-        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "max_features": null,
         "max_depth": null
       },
-      "mae_cv": 5.175
+      "mae_cv": 3.931
     },
     "XGBoost": {
       "parametros": {
         "subsample": 1.0,
-        "n_estimators": 100,
-        "min_child_weight": 5,
-        "max_depth": 3,
-        "learning_rate": 0.03,
-        "colsample_bytree": 0.8
+        "n_estimators": 300,
+        "min_child_weight": 1,
+        "max_depth": 5,
+        "learning_rate": 0.1,
+        "colsample_bytree": 0.7
       },
-      "mae_cv": 5.751
+      "mae_cv": 2.926
     }
   }
 }

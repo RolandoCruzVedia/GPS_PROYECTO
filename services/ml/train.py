@@ -37,7 +37,8 @@ except ImportError:
     print("[WARN] XGBoost no instalado. Solo se usara Random Forest.")
 
 BASE_DIR = Path(__file__).resolve().parent
-TRAIN_FILE = BASE_DIR.parent / "processing" / "dataset_train_aumentado.csv"
+#TRAIN_FILE = BASE_DIR.parent / "processing" / "dataset_train_aumentado.csv"
+TRAIN_FILE = BASE_DIR.parent / "processing" / "dataset_train_real.csv"
 TEST_FILE  = BASE_DIR.parent / "processing" / "dataset_test_real.csv"
 REAL_FILE  = BASE_DIR.parent / "processing" / "dataset.csv"
 MODELS_DIR = BASE_DIR / "models"
